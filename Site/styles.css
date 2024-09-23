@@ -64,7 +64,21 @@ nav ul {
 .lista_botoes {
     list-style-type: none;
     display: flex;
-    padding: 5%;
+    padding: 1%;
+    color: var(--branco);
+    justify-content: center;
+    text-align: center;
+
+}
+.main_botoes{
+    background-color: var(--verde);
+    color:var(--branco);
+    margin: 0 80px;
+    width: 250px;
+    height: 120px;
+    font-size: larger;
+    border-radius: 10%;
+
 }
 
 nav ul li {
