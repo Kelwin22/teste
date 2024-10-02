@@ -55,19 +55,19 @@
 
         /* Estilos para o botão de submissão */
         .btn {
-            background-color: #27582e; /* Cor branca do botão */
-            color: #ffffff; /* Cor do texto (verde escuro) */
+            background-color: #27582e; /* Cor verde escura do botão */
+            color: #ffffff; /* Cor do texto (branco) */
             border: none; /* Remove bordas */
-            padding: 10px 20px; /* Espaçamento interno do botão */
+            padding: 20px 30px; /* Espaçamento interno do botão */
             border-radius: 25px; /* Bordas bem arredondadas */
             cursor: pointer; /* Cursor muda para 'pointer' ao passar sobre o botão */
-            width: 50%; /* O botão ocupa toda a largura */
+            width: 60%; /* O botão ocupa toda a largura */
             font-weight: bold; /* Texto em negrito */
         }
 
         /* Efeito hover para o botão (quando o mouse passa sobre ele) */
         .btn:hover {
-            background-color: #eaeaea; /* Muda o fundo para cinza claro ao passar o mouse */
+            background-color: #295423; /* Muda o fundo para cinza claro ao passar o mouse */
         }
 
         /* Estilos para a nota informativa abaixo do formulário */
@@ -90,15 +90,15 @@
         <h1>Cadastro de Novo Integrante</h1>
         
         <!-- Início do formulário -->
-        <form action="#">
+        <form action="../index.html" >
             <!-- Campo para o nome completo com placeholder -->
-            <input type="text" id="nome" name="nome" placeholder="Ex.: Fulano(a) da Silva">
+            <input type="text" id="nome" name="nome" placeholder="Ex.: Fulano(a) da Silva" required>
             
             <!-- Campo para o número de registro com placeholder -->
-            <input type="text" id="registro" name="registro" placeholder="Ex.: 241234">
+            <input type="text" id="registro" name="registro" placeholder="Ex.: 241234" required>
             
             <!-- Campo para o cargo com placeholder -->
-            <input type="text" id="cargo" name="cargo" placeholder="Ex.: Estagiário">
+            <input type="text" id="cargo" name="cargo" placeholder="Ex.: Estagiário" required>
             
             <!-- Botão de submissão do formulário -->
             <button type="submit" class="btn">CADASTRAR</button>
@@ -110,3 +110,4 @@
 
 </body>
 </html>
+
