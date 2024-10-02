@@ -155,10 +155,92 @@
             </div>
             <input type="submit" value="Enviar">
         </form>
+
+        <h2>Petição Gerada</h2>
+        <textarea id="peticaoTexto" readonly></textarea>
+    
+        <div class="btn-group">
+            <button onclick="salvarTxt()">Salvar como TXT</button>
+            <button onclick="salvarPdf()">Salvar como PDF</button>
+            <button onclick="imprimirPeticao()">Imprimir</button>
+        </div>
     </div>
+    
     <footer>
         <p>Defensoria Pública do Distrito Federal &copy; 2024</p>
     </footer>
+    
+    <script>
+        function gerarPeticao() {
+            const nome = document.getElementById('nome').value;
+            const cpf = document.getElementById('cpf').value;
+            const rg = document.getElementById('rg').value;
+            const endereco = document.getElementById('endereco').value;
+            const cidade = document.getElementById('cidade').value;
+            const estado = document.getElementById('estado').value;
+            const cep = document.getElementById('cep').value;
+            const data_nascimento = document.getElementById('data_nascimento').value;
+            const telefone = document.getElementById('telefone').value;
+            const email = document.getElementById('email').value;
+            const valor_pensao = document.getElementById('valor_pensao').value;
+            const prazo_pagamento = document.getElementById('prazo_pagamento').value;
+            const motivo = document.getElementById('motivo').value;
+            const observacoes = document.getElementById('observacoes').value;
+    
+            const peticao = `
+            Petição Inicial - Rito de Prisão
+    
+            Exmo. Sr. Dr. Juiz de Direito,
+    
+            Eu, ${nome}, inscrito no CPF ${cpf} e RG ${rg}, residente à ${endereco}, na cidade de ${cidade}, ${estado}, CEP ${cep}, venho por meio desta solicitar a prisão civil do devedor de alimentos, nos termos do artigo X do Código de Processo Civil.
+    
+            Informações do Requerente:
+            Nome: ${nome}
+            Data de Nascimento: ${data_nascimento}
+            Telefone: ${telefone}
+            Email: ${email}
+    
+            Valor da Pensão: R$${valor_pensao}
+            Prazo de Pagamento: ${prazo_pagamento}
+    
+            Motivo da Prisão: ${motivo}
+    
+            Observações: ${observacoes}
+    
+            Termos em que, 
+            Pede deferimento.
+    
+            [Assinatura do requerente]
+            `;
+    
+            document.getElementById('peticaoTexto').value = peticao;
+        }
+    
+        function salvarTxt() {
+            const peticao = document.getElementById('peticaoTexto').value;
+            const blob = new Blob([peticao], { type: "text/plain;charset=utf-8" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "peticao.txt";
+            link.click();
+        }
+    
+        function salvarPdf() {
+            const peticao = document.getElementById('peticaoTexto').value;
+            const link = document.createElement("a");
+            link.href = `data:application/pdf;base64,${btoa(peticao)}`;
+            link.download = "peticao.pdf";
+            link.click();
+        }
+    
+        function imprimirPeticao() {
+            const peticao = document.getElementById('peticaoTexto').value;
+            const printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write('<pre>' + peticao + '</pre>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+
 </body>
 </html>
-PG - Prisão2.html
