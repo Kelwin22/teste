@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rito - Prisão</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2d5a27;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            background-image: url('../imagens/Tribunal.jpg');
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2d5a27;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        label {
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .form-group {
+            width: 48%;
+        }
+
+        .full-width {
+            width: 100%;
+        }
+
+        input[type="button"], input[type="submit"] {
+            background-color: #295423;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 12px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        input[type="button"]:hover, input[type="submit"]:hover {
+            background-color: #23481e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2d5a27;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Rito - Prisão</h1>
+    </header>
+
+    <div class="container">
+        <h2>Formulário de Detalhes</h2>
+        <form>
+            <h2>Exequente</h2>
+    
+            <div class="form-group full-width">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="vara">Vara e Comarca:</label>
+                <input type="text" id="vara" name="vara" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="rg">RG:</label>
+                <input type="text" id="rg" name="rg" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" required>
+            </div>
+    
+            <div class="form-group full-width">
+                <label for="endereco">Endereço Completo:</label>
+                <input type="text" id="endereco" name="endereco" required>
+            </div>
+    
+            <h2>Executado</h2>
+    
+            <div class="form-group full-width">
+                <label for="nome2">Nome Completo:</label>
+                <input type="text" id="nome2" name="nome2" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="cpf2">CPF:</label>
+                <input type="text" id="cpf2" name="cpf2" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="rg2">RG:</label>
+                <input type="text" id="rg2" name="rg2" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="endereco2">Endereço Completo:</label>
+                <input type="text" id="endereco2" name="endereco2" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="data1">Data de fixação da Pensão:</label>
+                <input type="date" id="data1" name="data1" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="valor_pensao">Valor da Pensão:</label>
+                <input type="text" id="valor_pensao" name="valor_pensao" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="banco">Banco e conta para depósito:</label>
+                <input type="text" id="banco" name="banco" required>
+            </div>
+    
+            <h2>ADVOGADO(A)</h2>
+            <div class="form-group full-width">
+                <label for="advogado_nome">Nome Completo:</label>
+                <input type="text" id="advogado_nome" name="advogado_nome" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="oab">OAB:</label>
+                <input type="text" id="oab" name="oab" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="data4">Data Hoje:</label>
+                <input type="date" id="data4" name="data4" required>
+            </div>
+    
+            <div class="form-group full-width">
+                <label for="assinatura">Assinatura:</label>
+                <input type="text" id="assinatura" name="assinatura" required>
+            </div>
+    
+            <div class="form-group full-width">
+                <label for="observacoes">Observações:</label>
+                <input type="text" id="observacoes" name="observacoes">
+            </div>
+    
+            <input type="button" value="Gerar Petição" onclick="gerarPeticao()">
+        </form>
+    
+        <h2>Petição Gerada</h2>
+        <textarea id="peticaoTexto" readonly></textarea>
+    
+        <div class="btn-group">
+            <button onclick="salvarTxt()">Salvar como TXT</button>
+            <button onclick="salvarPdf()">Salvar como PDF</button>
+            <button onclick="imprimirPeticao()">Imprimir</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Defensoria Pública do Distrito Federal &copy; 2024</p>
+    </footer>
+    
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.2.0/docx.min.js">
+        function gerarPeticao() {
+        const nome = document.getElementById('nome').value;
+        const vara = document.getElementById('vara').value;
+        const cpf = document.getElementById('cpf').value;
+        const rg = document.getElementById('rg').value;
+        const endereco = document.getElementById('endereco').value;
+        const cidade = document.getElementById('cidade').value;
+        const estado = document.getElementById('estado').value;
+        const cep = document.getElementById('cep').value;
+
+        const nomeExecutado = document.getElementById('nome2').value;
+        const cpfExecutado = document.getElementById('cpf2').value;
+        const rgExecutado = document.getElementById('rg2').value;
+        const enderecoExecutado = document.getElementById('endereco2').value;
+
+        const dataFixacao = document.getElementById('data1').value;
+        const valorPension = document.getElementById('valor_pensao').value;
+        const bancoConta = document.getElementById('banco').value;
+
+        const advogadoNome = document.getElementById('advogado_nome').value;
+        const oab = document.getElementById('oab').value;
+        const dataHoje = document.getElementById('data4').value;
+        const assinatura = document.getElementById('assinatura').value;
+
+        const observacoes = document.getElementById('observacoes').value;
+    
+            const peticao = `
+            Modelo de Petição Inicial de Pensão Alimentícia
+
+            EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) DE DIREITO DA _ VARA DE FAMÍLIA DA COMARCA DE __.
+
+            ${nomeExecutado}, menor impúbere, neste ato representado por sua genitora ${nome}, 
+            residente e domiciliada à ${endereco}, por intermédio de seu advogado ${advogadoNome}, 
+            vem, respeitosamente, à presença de Vossa Excelência, propor a presente:
+
+            Ação de Alimentos
+
+            em face de ${nomeExecutado}, residente e domiciliado à ${enderecoExecutado}, pelos fatos e fundamentos a seguir expostos:
+
+            1) O requerente é filho do réu, conforme certidão de nascimento em anexo.
+            2) O requerente depende financeiramente do réu para sua subsistência.
+            3) O requerido possui capacidade financeira para contribuir com o sustento do menor.
+
+            Diante do exposto requer:
+            a) A citação do réu para comparecimento à audiência de conciliação;
+            b) A fixação de alimentos provisórios no valor de R$${valorPension}; 
+            c) A condenação do réu ao pagamento de pensão alimentícia definitiva;
+
+            Nestes termos, Pede deferimento.
+            ${cidade}, ${dataHoje}
+            ${advogadoNome}, OAB: ${oab}
+            `;
+    
+            document.getElementById('peticaoTexto').value = peticao;
+        }
+    
+        function salvarTxt() {
+            const peticao = document.getElementById('peticaoTexto').value;
+            const blob = new Blob([peticao], { type: "text/plain;charset=utf-8" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "peticao.txt";
+            link.click();
+        }
+    
+        function salvarPdf() {
+            const peticao = document.getElementById('peticaoTexto').value;
+            const link = document.createElement("a");
+            link.href = `data:application/pdf;base64,${btoa(peticao)}`;
+            link.download = "peticao.pdf";
+            link.click();
+        }
+    
+        function imprimirPeticao() {
+            const peticao = document.getElementById('peticaoTexto').value;
+            const printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write('<pre>' + peticao + '</pre>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+</html>

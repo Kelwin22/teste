@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rito - Prisão</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2d5a27;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2d5a27;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        label {
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .form-group {
+            width: 48%;
+        }
+
+        .full-width {
+            width: 100%;
+        }
+
+        input[type="submit"], button {
+            background-color: #295423;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 12px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #23481e;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2d5a27;
+            color: white;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-group button {
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Rito - Prisão</h1>
+    </header>
+
+    <div class="container">
+        <h2>Formulário de Detalhes</h2>
+        <form id="form">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" required>
+            </div>
+
+            <div class="form-group">
+                <label for="rg">RG:</label>
+                <input type="text" id="rg" name="rg" required>
+            </div>
+
+            <div class="form-group">
+                <label for="endereco">Endereço Completo:</label>
+                <input type="text" id="endereco" name="endereco" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required>
+            </div>
+
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" required>
+            </div>
+
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="valor_pensao">Valor da Pensão:</label>
+                <input type="number" id="valor_pensao" name="valor_pensao" required>
+            </div>
+
+            <div class="form-group">
+                <label for="prazo_pagamento">Prazo de Pagamento:</label>
+                <input type="text" id="prazo_pagamento" name="prazo_pagamento" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="motivo">Motivo da Prisão:</label>
+                <input type="text" id="motivo" name="motivo" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="observacoes">Observações:</label>
+                <input type="text" id="observacoes" name="observacoes" required>
+            </div>
+
+            <input type="button" value="Gerar Petição" onclick="gerarPeticao()">
+        </form>
+
+        <h2>Petição Gerada</h2>
+        <textarea id="peticaoTexto" readonly></textarea>
+
+        <div class="btn-group">
+            <button onclick="salvarDocx()">Salvar como DOCX</button>
+            <button onclick="salvarPdf()">Salvar como PDF</button>
+            <button onclick="imprimirPeticao()">Imprimir</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Defensoria Pública do Distrito Federal &copy; 2024</p>
+    </footer>
+
+    <script>
+        function gerarPeticao() {
+            const nome = document.getElementById('nome').value;
+            const cpf = document.getElementById('cpf').value;
+            const rg = document.getElementById('rg').value;
+            const endereco = document.getElementById('endereco').value;
+            const cidade = document.getElementById('cidade').value;
+            const estado = document.getElementById('estado').value;
+            const cep = document.getElementById('cep').value;
+            const data_nascimento = document.getElementById('data_nascimento').value;
+            const telefone = document.getElementById('telefone').value;
+            const email = document.getElementById('email').value;
+            const valor_pensao = document.getElementById('valor_pensao').value;
+            const prazo_pagamento = document.getElementById('prazo_pagamento').value;
+            const motivo = document.getElementById('motivo').value;
+            const observacoes = document.getElementById('observacoes').value;
+
+            const peticao = `
+            Petição Inicial - Rito de Prisão
+
+            Exmo. Sr. Dr. Juiz de Direito,
+
+            Eu, ${nome}, inscrito no CPF ${cpf} e RG ${rg}, residente à ${endereco}, na cidade de ${cidade}, ${estado}, CEP ${cep}, venho por meio desta solicitar a prisão civil do devedor de alimentos, nos termos do artigo X do Código de Processo Civil.
+
+            Informações do Requerente:
+            Nome: ${nome}
+            Data de Nascimento: ${data_nascimento}
+            Telefone: ${telefone}
+            Email: ${email}
+
+            Valor da Pensão: R$${valor_pensao}
+            Prazo de Pagamento: ${prazo_pagamento}
+
+            Motivo da Prisão: ${motivo}
+
+            Observações: ${observacoes}
+
+            Termos em que, 
+            Pede deferimento.
+
+            [Assinatura do requerente]
+            `;
+
+            document.getElementById('peticaoTexto').value = peticao;
+        }
+
+        function salvarDocx() {
+            const peticao = document.getElementById('peticaoTexto').value;
+
+            const doc = new docx.Document({
+                sections: [{
+                    properties: {},
+                    children: [
+                        new docx.Paragraph({
+                            text: peticao,
+                        }),
+                    ],
+                }],
+            });
+
+            // Gerar o documento e baixar
+            docx.Packer.toBlob(doc).then(blob => {
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "peticao.docx";
+                link.click();
+            });
+        }
+
+        function salvarPdf() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const peticao = document.getElementById('peticaoTexto').value;
+
+            doc.text(peticao, 10, 10);
+            doc.save("peticao.pdf");
+        }
+
+        function imprimirPeticao() {
+            const peticao = document.getElementById('peticaoTexto').value;
+            const printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write('<pre>' + peticao + '</pre>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+</html>
