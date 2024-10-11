@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rito - Penhora</title>
+    <link rel="stylesheet" href="stylecalcpenhora.css">
+</head>
+<body>
+    <header>
+        <h1>Rito - Penhora</h1>
+    </header>
+    <div class="container">
+        <h2>Formulário de Detalhes</h2>
+        <form action="./peticaoAlimentos.html" onsubmit="gerarPeticao(); return false;">
+            <!-- DADOS DO Menor -->
+            <h2> Dados do Menor</h2>
+            <div class="form-group full-width">
+                <label for="NomeMenor">Nome Completo do Menor:</label>
+                <input type="text" id="NomeMenor" name="NomeMenor" required>
+            </div>
+            <div class="form-group full-width">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" required>
+            </div>
+            <div class="form-group">
+                <label for="cpfMenor">CPF do Menor:</label>
+                <input type="text" id="cpfMenor" name="cpfMenor" required>
+            </div>
+            <div class="form-group">
+                <label for="rgMenor">RG do Menor:</label>
+                <input type="text" id="rgMenor" name="rgMenor" required>
+            </div>
+            <!-- DADOS DO Representante -->
+            <h2> Dados do Representante</h2>
+            <div class="form-group full-width">
+                <label for="NomeRepresentante">Nome Completo do Representante Legal:</label>
+                <input type="text" id="NomeRepresentante" name="NomeRepresentante" required>
+            </div>
+            <div class="form-group">
+                <label for="estCivilR">Estado Civil do Representante Legal:</label>
+                <select name="estCivilR" id="estCivilR">
+                    <option value="solteiro">Solteiro(a)</option>
+                    <option value="casado">Casado(a)</option>
+                    <option value="divorciado">Divorciado(a)</option>
+                    <option value="viuvo">Viúvo(a)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="profissao">Profissão do Representante Legal:</label>
+                <input type="text" id="profissao" name="profissao" required>
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço Completo do Representante:</label>
+                <input type="text" id="endereco" name="endereco" required>
+            </div>
+            <div class="form-group">
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" required>
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <!-- DADOS DO Advogado -->
+            <h2> Dados do Advogado</h2>
+            <div class="form-group full-width">
+                <label for="NomeAdvg">Nome Completo do Advogado:</label>
+                <input type="text" id="NomeAdvg" name="NomeAdvg" required>
+            </div>
+            <div class="form-group full-width">
+                <label for="oab">OAB do Advogado:</label>
+                <input type="text" id="oab" name="oab" required>
+            </div>
+            <!-- DADOS DO Devedor -->
+            <h2> Dados do Devedor</h2>
+            <div class="form-group full-width">
+                <label for="NomeDevedor">Nome Completo do Devedor:</label>
+                <input type="text" id="NomeDevedor" name="NomeDevedor" required>
+            </div>
+            <div class="form-group">
+                <label for="estCivilD">Estado Civil do Devedor:</label>
+                <select name="estCivilD" id="estCivilD">
+                    <option value="solteiro">Solteiro(a)</option>
+                    <option value="casado">Casado(a)</option>
+                    <option value="divorciado">Divorciado(a)</option>
+                    <option value="viuvo">Viúvo(a)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="profissaoD">Profissão do Devedor:</label>
+                <input type="text" id="profissaoD" name="profissaoD" required>
+            </div>
+            <div class="form-group">
+                <label for="enderecoD">Endereço Completo do Devedor:</label>
+                <input type="text" id="enderecoD" name="enderecoD" required>
+            </div>
+            <div class="form-group">
+                <label for="cidadeD">Cidade:</label>
+                <input type="text" id="cidadeD" name="cidadeD" required>
+            </div>
+            <div class="form-group">
+                <label for="estadoD">Estado:</label>
+                <input type="text" id="estadoD" name="estadoD" required>
+            </div>
+            <div class="form-group">
+                <label for="cepD">CEP:</label>
+                <input type="text" id="cepD" name="cepD" required>
+            </div>
+            <div class="form-group">
+                <label for="telefoneD">Telefone:</label>
+                <input type="text" id="telefoneD" name="telefoneD" required>
+            </div>
+            <div class="form-group">
+                <label for="emailD">Email:</label>
+                <input type="email" id="emailD" name="emailD" required>
+            </div>
+            <!-- DADOS DO Processo -->
+            <div class="form-group full-width">
+                <h2 style="text-align: left;">Dados do Processo</h2>
+            </div>
+            <div class="form-group">
+                <label for="nProcesso">Número do Processo:</label>
+                <input type="text" id="nProcesso" name="nProcesso" required>
+            </div>
+            <div class="form-group">
+                <label for="percentual">Percentual:</label>
+                <input type="text" id="percentual" name="percentual" required>
+            </div>
+            <div class="form-group">
+                <label for="cobranca">Cobrança:</label>
+                <select name="cobranca" id="cobranca" onchange="toggleFields()">
+                    <option value="SalMin">Sal. Mínimo</option>
+                    <option value="renda">Renda</option>
+                </select>
+            </div>
+            <div class="form-group" id="valorRendaGroup" style="display: none;">
+                <label for="valor_renda">Valor da Renda:</label>
+                <input type="text" id="valor_renda" name="valor_renda">
+            </div>
+
+            <div class="form-group">
+                <label for="numero_filhos">Número de Filhos:</label>
+                <input type="number" id="numero_filhos" name="numero_filhos" min="1" max="100" required>
+            </div>
+            
+            <input type="button" value="Calcular Pensão" onclick="calcularPensao()">
+            <div class="form-group full-width">
+                <label for="resultado">Resultado da Pensão:</label>
+                <input type="text" id="resultado" name="resultado" readonly>
+            </div>
+            <input type="submit" value="Enviar">
+        </form>
+
+        <h2>Petição Gerada</h2>
+        <textarea id="peticaoTexto" readonly></textarea>
+    
+        <div class="btn-group">
+            <button onclick="salvarTxt()">Salvar como TXT</button>
+            <button onclick="salvarPdf()">Salvar como PDF</button>
+            <button onclick="imprimirPeticao()">Imprimir</button>
+        </div>
+    </div>
+
+    <script>
+        function calcularPensao() {
+            const rendaDevedor = parseFloat(document.getElementById('valor_renda').value);
+            const percentual = parseFloat(document.getElementById('percentual').value);
+            const salarioMinimo = 1412; // valor fixo do salário mínimo
+            const numeroFilhos = parseInt(document.getElementById('numero_filhos').value);
+
+            // Cálculo baseado no percentual da renda
+            const pensaoPorRenda = rendaDevedor * (percentual / 100);
+
+            // Cálculo baseado em salário mínimo
+            const pensaoPorSalarioMinimo = salarioMinimo * numeroFilhos;
+
+            // Escolha qual valor utilizar (ou ambos)
+            const valorFinal = Math.max(pensaoPorRenda, pensaoPorSalarioMinimo); // utiliza o maior valor
+
+            alert(`O valor da pensão é: R$ ${valorFinal.toFixed(2)}`);
+            document.getElementById('valor_pensao').value = valorFinal.toFixed(2); // atualiza o campo de valor da pensão
+            document.getElementById('resultado').value = `R$ ${valorFinal.toFixed(2)}`; // atualiza o campo de resultado
+        }
+
+        function toggleFields() {
+            const cobranca = document.getElementById('cobranca').value;
+            const valorRendaGroup = document.getElementById('valorRendaGroup');
+            valorRendaGroup.style.display = cobranca === 'renda' ? 'block' : 'none';
+        }
+
+        function gerarPeticao() {
+            const nomeMenor = document.getElementById('NomeMenor').value;
+            const dataNascimentoMenor = document.getElementById('data_nascimento').value;
+            const cpfMenor = document.getElementById('cpfMenor').value;
+            const rgMenor = document.getElementById('rgMenor').value;
+
+            // Dados do Representante
+            const nomeRepresentante = document.getElementById('NomeRepresentante').value;
+            const estCivilRepresentante = document.getElementById('estCivilR').value;
+            const profissaoRepresentante = document.getElementById('profissao').value;
+            const enderecoRepresentante = document.getElementById('endereco').value;
+            const cidadeRepresentante = document.getElementById('cidade').value;
+            const estadoRepresentante = document.getElementById('estado').value;
+            const cepRepresentante = document.getElementById('cep').value;
+            const telefoneRepresentante = document.getElementById('telefone').value;
+            const emailRepresentante = document.getElementById('email').value;
+
+            // Dados do Advogado
+            const nomeAdvogado = document.getElementById('NomeAdvg').value;
+            const oabAdvogado = document.getElementById('oab').value;
+
+            const valorPensao = document.getElementById('valor_pensao').value; // Captura o valor da pensão
+            const nProcesso = document.getElementById('nProcesso').value; // Captura o número do processo
+
+            const peticao = `
+            Petição Inicial - Rito de Prisão
+
+            Exmo. Sr. Dr. Juiz de Direito,
+
+            Eu, ${nomeRepresentante}, venho por meio desta solicitar a prisão civil do devedor de alimentos, nos termos do artigo X do Código de Processo Civil.
+
+            Informações do Requerente:
+            Nome: ${nomeRepresentante}
+            Data de Nascimento: ${dataNascimentoMenor}
+            CPF do Menor: ${cpfMenor}
+            RG do Menor: ${rgMenor}
+            Telefone: ${telefoneRepresentante}
+            Email: ${emailRepresentante}
+
+            Número do Processo: ${nProcesso}
+            Valor da Pensão: R$${valorPensao}
+
+            Termos em que, 
+            Pede deferimento.
+
+            [Assinatura do requerente]
+            `;
+
+            document.getElementById('peticaoTexto').value = peticao;
+        }
+
+        function salvarTxt() {
+            // Implementar a funcionalidade para salvar como TXT
+        }
+    
+        function salvarPdf() {
+            const peticao = document.getElementById('peticaoTexto').value;
+            const link = document.createElement("a");
+            link.href = `data:application/pdf;base64,${btoa(peticao)}`;
+            link.download = "peticao.pdf";
+            link.click();
+        }
+    
+        function imprimirPeticao() {
+            const peticao = document.getElementById('peticaoTexto').value;
+            const printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write('<pre>' + peticao + '</pre>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+</html>
