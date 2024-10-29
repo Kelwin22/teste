@@ -135,6 +135,14 @@
             <label for="nProcesso">Número do Processo:</label>
             <input type="text" id="nProcesso" name="nProcesso" required>
         </div>
+        <div class="form-group full-width">
+            <label for="data_inicio">Data de Início:</label>
+            <input type="date" id="data_inicio" name="data_inicio" required>
+        </div>
+        <div class="form-group full-width">
+            <label for="data_final">Data Final:</label>
+            <input type="date" id="data_final" name="data_final" required>
+        </div>
         <div class="form-group">
             <label for="percentual">Percentual:</label>
             <input type="text" id="percentual" name="percentual" required>
@@ -198,6 +206,20 @@
 </footer>
 
 <script>
+
+    function calcularDiferencaMeses() {
+            const dataInicio = new Date(document.getElementById('data_inicio').value);
+            const dataFinal = new Date(document.getElementById('data_final').value);
+
+            const anos = dataFinal.getFullYear() - dataInicio.getFullYear();
+            const meses = dataFinal.getMonth() - dataInicio.getMonth();
+
+            totalMeses = anos * 12 + meses;
+
+            document.getElementById('resultadoMeses').value = totalMeses;
+            return totalMeses;
+        }
+
     function calcularPensao() {
         const rendaDevedor = parseFloat(document.getElementById('valor_renda').value);
         const percentual = parseFloat(document.getElementById('percentual').value);
@@ -206,6 +228,7 @@
         const tipoCobranca = document.getElementById('cobranca').value;
         const indiceCorreção = parseFloat(document.getElementById('indice_correção').value);
         const Juros = parseFloat(document.getElementById('juros').value);
+        const totalMeses = calcularDiferencaMeses();
 
 let valoeComJuros;
 let valorCorrigido;
@@ -215,12 +238,12 @@ if (tipoCobranca === "renda") {
     const pensaoPorRenda = rendaDevedor * (percentual/100);
     valorCorrigido = pensaoPorRenda * (1+(indiceCorreção/100));
     valorComJuros = valorCorrigido * (1+(Juros/100))
-    valorFinal = valorComJuros * numeroFilhos;
+    valorFinal = (valorComJuros*numeroFilhos*3);
 } else {
     const pensaoPorSalarioMinimo = salarioMinimo;
     valorCorrigido = pensaoPorSalarioMinimo * (1+(indiceCorreção/100));
     valorComJuros = valorCorrigido * (1+(Juros/100))
-    valorFinal = valorComJuros * numeroFilhos;
+    valorFinal = (valorComJuros*numeroFilhos*3);
 }
 
             
