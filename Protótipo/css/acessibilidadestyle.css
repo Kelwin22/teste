@@ -1,0 +1,71 @@
+.accessibility-button {
+    display: block;
+    width: auto;
+    background-color: #2d5a27;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-top: 20px; 
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accessibility-button:hover {
+    background-color: #2b4b22; /* Cor ao passar o mouse, ajuste conforme desejado */
+}
+
+#accessibilityMenu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: #f0f2f5;
+    color: #2d5a27;
+    border: 1px solid #ccc;
+    padding: 10px;s
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 8px;
+}
+
+#accessibilityMenu button {
+    display: block;
+    width: 100%;
+    background-color: #2d5a27;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#accessibilityMenu button:hover {
+    background-color: #23481e;
+}
+
+/* Linha de leitura */
+.reading-line {
+    position: fixed;
+    width: 50%;
+    height: 2px;
+    background-color: #ff0000;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Classe para aplicar o modo de alto contraste com inversão de cores */
+.high-contrast {
+    filter: invert(1);
+}
+
+/* Exceção para imagens, que podem precisar voltar ao normal */
+.high-contrast img {
+    filter: invert(1); /* Reverte a inversão para manter as cores originais das imagens */
+}
