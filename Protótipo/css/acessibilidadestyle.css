@@ -15,7 +15,7 @@
 }
 
 .accessibility-button:hover {
-    background-color: #2b4b22; /* Cor ao passar o mouse, ajuste conforme desejado */
+    background-color: #2b4b22; 
 }
 
 #accessibilityMenu {
@@ -50,7 +50,7 @@
     background-color: #23481e;
 }
 
-/* Linha de leitura */
+/*linha de leitura*/
 .reading-line {
     position: fixed;
     width: 50%;
@@ -60,12 +60,12 @@
     z-index: 1000;
 }
 
-/* Classe para aplicar o modo de alto contraste com inversão de cores */
+/*alto contraste (inversão de cores)*/
 .high-contrast {
     filter: invert(1);
 }
 
-/* Exceção para imagens, que podem precisar voltar ao normal */
+/* exceção para imagens*/
 .high-contrast img {
-    filter: invert(1); /* Reverte a inversão para manter as cores originais das imagens */
+    filter: invert(1); 
 }
