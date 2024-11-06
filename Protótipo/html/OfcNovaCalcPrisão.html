@@ -14,7 +14,7 @@
         <h1>Rito - Prisão</h1>
     </header>
 
-    <button class="btn-acessibilidade" onclick="toggleAcessibilidadeMenu()">Acessibilidade</button>
+    <button class="btn-acessibilidade" onclick="exibirMenuAcessibilidade()">Acessibilidade</button>
     <div id="menuAcessibilidade">
         <button onclick="ajustarTamanhoFonte(1)">Aumentar fonte</button>
         <button onclick="ajustarTamanhoFonte(-1)">Diminuir fonte</button>
@@ -228,21 +228,23 @@ function ajustarTamanhoFonte(mudanca) {
     tamanhoFonte += mudanca;
 
     document.querySelectorAll('body, body *').forEach(element => {
-        const tamanhoAtual = parseFloat(window.getComputedStyle(element).tamanhoFonte);
-        element.style.tamanhoFonte = (tamanhoAtual + mudanca) + 'px';
+        const tamanhoAtual = parseFloat(window.getComputedStyle(element).fontSize);
+        element.style.fontSize = (tamanhoAtual + mudanca) + 'px';
     });
 }
 
 
 function alternarContraste() {
     altoContraste = !altoContraste;
-    document.body.classList.toggle('high-contrast', altoContraste);
+    document.body.classList.toggle('altoContraste', altoContraste);
 }
+
+
 
 function alternarLinhaLeitura() {
     if (!linhaLeitura) {
         linhaLeitura = document.createElement('div');
-        linhaLeitura.classList.add('linha-de-leitura');
+        linhaLeitura.classList.add('linhaLeitura');
         document.body.appendChild(linhaLeitura);
         document.addEventListener('mousemove', moverLinhaLeitura);
     } else {
@@ -252,8 +254,15 @@ function alternarLinhaLeitura() {
     }
 }
 
+function moverLinhaLeitura(evento) {
+    if (linhaLeitura) {
+        linhaLeitura.style.top = `${evento.clientY}px`;  
+        linhaLeitura.style.left = `${evento.clientX - (linhaLeitura.offsetWidth / 2)}px`;  
+    }
+}
+
 document.addEventListener("mousemove", function (evento) {
-    const linhaLeitura = document.querySelector(".linha-de-leitura");
+    const linhaLeitura = document.querySelector(".linhaLeitura");
     linhaLeitura.style.top = `${evento.clientY}px`;
     linhaLeitura.style.left = `${evento.clientX - (linhaLeitura.offsetWidth / 2)}px`; 
 });
