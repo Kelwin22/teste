@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rito - Penhora</title>
-    <link rel="stylesheet" href="stylecalcpenhora.css">
+    <link rel="stylesheet" href="stylecalcprisão.css">
+    <link rel ="stylesheet" href="acessibilidadestyle.css">
 </head>
 <body>
     <header>
         <h1>Rito - Penhora</h1>
     </header>
+
+    <!--botão de acessibilidade-->
+    <button class="btn-acessibilidade" onclick="exibirMenuAcessibilidade()">Acessibilidade</button>
+    <div id="menuAcessibilidade">
+        <button onclick="ajustarTamanhoFonte(1)">Aumentar fonte</button>
+        <button onclick="ajustarTamanhoFonte(-1)">Diminuir fonte</button>
+        <button onclick="alternarContraste()">Alto contraste</button>
+        <button onclick="alternarLinhaLeitura()">Linha de leitura</button>
+    </div>
+    
     <div class="container">
         <h2>Formulário de Detalhes</h2>
         <form action="./peticaoAlimentos.html" onsubmit="gerarPeticao(); return false;">
@@ -181,12 +192,6 @@
             <input type="submit" value="Enviar">
         </form>
 
-        <input type="button" value="Calcular Diferença de Meses" onclick="calcularDiferencaMeses()">
-        <div class="form-group full-width">
-            <label for="resultadoMeses">Diferença em Meses:</label>
-            <input type="text" id="resultadoMeses" name="resultadoMeses" readonly>
-        </div>
-
         <h2>Petição Gerada</h2>
         <textarea id="peticaoTexto" readonly></textarea>
     
@@ -197,85 +202,128 @@
         </div>
     </div>
 
-    <script>
-        function calcularDiferencaMeses() {
-            const dataInicio = new Date(document.getElementById('data_inicio').value);
-            const dataFinal = new Date(document.getElementById('data_final').value);
+<script>
 
-            const anos = dataFinal.getFullYear() - dataInicio.getFullYear();
-            const meses = dataFinal.getMonth() - dataInicio.getMonth();
+let tamanhoFonte = 16;
+let altoContraste = false;
+let linhaLeitura;
 
-            totalMeses = anos * 12 + meses;
-
-            document.getElementById('resultadoMeses').value = totalMeses;
-            return totalMeses;
-        }
-
-
-        function calcularPensao() {
-            const rendaDevedor = parseFloat(document.getElementById('valor_renda').value)||0;
-            const percentual = parseFloat(document.getElementById('percentual').value)||0;
-            const salarioMinimo = 1412; // valor fixo do salário mínimo
-            const numeroFilhos = parseInt(document.getElementById('numero_filhos').value)||0;
-            const tipoCobranca = document.getElementById('cobranca').value;
-            const indiceCorreção = parseFloat(document.getElementById('indice_correção').value)||0;
-            const Juros = parseFloat(document.getElementById('juros').value)|| 0;
-            const totalMeses = calcularDiferencaMeses();
-
-let valorComJuros;
-let valorCorrigido;
-let mesesPenhora;
-let valorFinal;
-
-if (tipoCobranca === "renda") {
-    const pensaoPorRenda = rendaDevedor * (percentual/100);
-    valorCorrigido = pensaoPorRenda * (1+(indiceCorreção/100));
-    valorComJuros = valorCorrigido * (1+(Juros/100));
-    mesesPenhora = (totalMeses-3);
-    valorFinal = valorComJuros * numeroFilhos * mesesPenhora;
-} else {
-    const pensaoPorSalarioMinimo = salarioMinimo;
-    valorCorrigido = pensaoPorSalarioMinimo * (1+(indiceCorreção/100));
-    valorComJuros = valorCorrigido * (1+(Juros/100));
-    mesesPenhora = (totalMeses-3);
-    valorFinal = valorComJuros * numeroFilhos * mesesPenhora;
+function exibirMenuAcessibilidade() {
+    const menu = document.getElementById('menuAcessibilidade');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 }
 
+function ajustarTamanhoFonte(mudanca) {
+    tamanhoFonte += mudanca;
+
+    document.querySelectorAll('body, body *').forEach(element => {
+        const tamanhoAtual = parseFloat(window.getComputedStyle(element).fontSize);
+        element.style.fontSize = (tamanhoAtual + mudanca) + 'px';
+    });
+}
+
+function alternarContraste() {
+    altoContraste = !altoContraste;
+    document.body.classList.toggle('altoContraste', altoContraste);
+}
+
+function alternarLinhaLeitura() {
+    if (!linhaLeitura) {
+        linhaLeitura = document.createElement('div');
+        linhaLeitura.classList.add('linhaLeitura');
+        document.body.appendChild(linhaLeitura);
+        document.addEventListener('mousemove', moverLinhaLeitura);
+    } else {
+        linhaLeitura.remove();
+        linhaLeitura = null;
+        document.removeEventListener('mousemove', moverLinhaLeitura);
+    }
+}
+
+document.addEventListener("mousemove", function (evento) {
+    const linhaLeitura = document.querySelector(".linhaLeitura");
+    linhaLeitura.style.top = `${evento.clientY}px`;
+    linhaLeitura.style.left = `${evento.clientX - (linhaLeitura.offsetWidth / 2)}px`;
+});
+
+function calcularDiferencaMeses() {
+    const dataInicio = new Date(document.getElementById('data_inicio').value);
+    const dataFinal = new Date(document.getElementById('data_final').value);
+
+    const anos = dataFinal.getFullYear() - dataInicio.getFullYear();
+    const meses = dataFinal.getMonth() - dataInicio.getMonth();
+
+    totalMeses = anos * 12 + meses;
+
+    document.getElementById('resultadoMeses').value = totalMeses;
+    return totalMeses;
+}
+
+function calcularPensao() {
+    const rendaDevedor = parseFloat(document.getElementById('valor_renda').value)||0;
+    const percentual = parseFloat(document.getElementById('percentual').value)||0;
+    const salarioMinimo = 1412; // valor fixo do salário mínimo
+    const numeroFilhos = parseInt(document.getElementById('numero_filhos').value)||0;
+    const tipoCobranca = document.getElementById('cobranca').value;
+    const indiceCorreção = parseFloat(document.getElementById('indice_correção').value)||0;
+    const Juros = parseFloat(document.getElementById('juros').value)|| 0;
+    const totalMeses = calcularDiferencaMeses();
+
+    let valorComJuros;
+    let valorCorrigido;
+    let mesesPenhora;
+    let valorFinal;
+
+    if (tipoCobranca === "renda") {
+        const pensaoPorRenda = rendaDevedor * (percentual/100);
+        valorCorrigido = pensaoPorRenda * (1+(indiceCorreção/100));
+        valorComJuros = valorCorrigido * (1+(Juros/100));
+        mesesPenhora = (totalMeses-3);
+        valorFinal = valorComJuros * numeroFilhos * mesesPenhora;
+    } else {
+        const pensaoPorSalarioMinimo = salarioMinimo;
+        valorCorrigido = pensaoPorSalarioMinimo * (1+(indiceCorreção/100));
+        valorComJuros = valorCorrigido * (1+(Juros/100));
+        mesesPenhora = (totalMeses-3);
+        valorFinal = valorComJuros * numeroFilhos * mesesPenhora;
+    }
+
             
-            document.getElementById('resultado').value = `R$ ${valorFinal.toFixed(2)}`; // atualiza o campo de resultado
-        }
+    document.getElementById('resultado').value = `R$ ${valorFinal.toFixed(2)}`; // atualiza o campo de resultado
+}
 
-        function toggleFields() {
-            const cobranca = document.getElementById('cobranca').value;
-            const valorRendaGroup = document.getElementById('valorRendaGroup');
-            valorRendaGroup.style.display = cobranca === 'renda' ? 'block' : 'none';
-        }
+function toggleFields() {
+    const cobranca = document.getElementById('cobranca').value;
+    const valorRendaGroup = document.getElementById('valorRendaGroup');
+    valorRendaGroup.style.display = cobranca === 'renda' ? 'block' : 'none';
+}
 
-        function gerarPeticao() {
-            const nomeMenor = document.getElementById('NomeMenor').value;
-            const dataNascimentoMenor = document.getElementById('data_nascimento').value;
-            const cpfMenor = document.getElementById('cpfMenor').value;
-            const rgMenor = document.getElementById('rgMenor').value;
+function gerarPeticao() {
+    // Dados do Menor
+    const nomeMenor = document.getElementById('NomeMenor').value;
+    const dataNascimentoMenor = document.getElementById('data_nascimento').value;
+    const cpfMenor = document.getElementById('cpfMenor').value;
+    const rgMenor = document.getElementById('rgMenor').value;
 
-            // Dados do Representante
-            const nomeRepresentante = document.getElementById('NomeRepresentante').value;
-            const estCivilRepresentante = document.getElementById('estCivilR').value;
-            const profissaoRepresentante = document.getElementById('profissao').value;
-            const enderecoRepresentante = document.getElementById('endereco').value;
-            const cidadeRepresentante = document.getElementById('cidade').value;
-            const estadoRepresentante = document.getElementById('estado').value;
-            const cepRepresentante = document.getElementById('cep').value;
-            const telefoneRepresentante = document.getElementById('telefone').value;
-            const emailRepresentante = document.getElementById('email').value;
+    // Dados do Representante
+    const nomeRepresentante = document.getElementById('NomeRepresentante').value;
+    const estCivilRepresentante = document.getElementById('estCivilR').value;
+    const profissaoRepresentante = document.getElementById('profissao').value;
+    const enderecoRepresentante = document.getElementById('endereco').value;
+    const cidadeRepresentante = document.getElementById('cidade').value;
+    const estadoRepresentante = document.getElementById('estado').value;
+    const cepRepresentante = document.getElementById('cep').value;
+    const telefoneRepresentante = document.getElementById('telefone').value;
+    const emailRepresentante = document.getElementById('email').value;
 
-            // Dados do Advogado
-            const nomeAdvogado = document.getElementById('NomeAdvg').value;
-            const oabAdvogado = document.getElementById('oab').value;
+    // Dados do Advogado
+    const nomeAdvogado = document.getElementById('NomeAdvg').value;
+    const oabAdvogado = document.getElementById('oab').value;
 
-            const valorPensao = document.getElementById('valor_pensao').value; // Captura o valor da pensão
-            const nProcesso = document.getElementById('nProcesso').value; // Captura o número do processo
+    const valorPensao = document.getElementById('valor_pensao').value; // Captura o valor da pensão
+    const nProcesso = document.getElementById('nProcesso').value; // Captura o número do processo
 
-            const peticao = `
+        const peticao = `
             Petição Inicial - Rito de Prisão
 
             Exmo. Sr. Dr. Juiz de Direito,
