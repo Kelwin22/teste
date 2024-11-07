@@ -240,6 +240,13 @@ function alternarLinhaLeitura() {
     }
 }
 
+function moverLinhaLeitura(evento) {
+    if (linhaLeitura) {
+        linhaLeitura.style.top = `${evento.clientY}px`;  
+        linhaLeitura.style.left = `${evento.clientX - (linhaLeitura.offsetWidth / 2)}px`;  
+    }
+}
+
 document.addEventListener("mousemove", function (evento) {
     const linhaLeitura = document.querySelector(".linhaLeitura");
     linhaLeitura.style.top = `${evento.clientY}px`;
