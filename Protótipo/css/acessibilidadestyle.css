@@ -1,4 +1,4 @@
-.accessibility-button {
+.btn-acessibilidade {
     display: block;
     width: auto;
     background-color: #2d5a27;
@@ -14,11 +14,11 @@
     transition: background-color 0.3s ease;
 }
 
-.accessibility-button:hover {
-    background-color: #2b4b22; 
+.btn-acessibilidade:hover {
+    background-color: #2b4b22; /* Cor ao passar o mouse, ajuste conforme desejado */
 }
 
-#accessibilityMenu {
+#menuAcessibilidade {
     display: none;
     position: absolute;
     top: 50px;
@@ -26,13 +26,13 @@
     background-color: #f0f2f5;
     color: #2d5a27;
     border: 1px solid #ccc;
-    padding: 10px;s
+    padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     border-radius: 8px;
 }
 
-#accessibilityMenu button {
+#menuAcessibilidade button {
     display: block;
     width: 100%;
     background-color: #2d5a27;
@@ -46,12 +46,12 @@
     transition: background-color 0.3s ease;
 }
 
-#accessibilityMenu button:hover {
+#menuAcessibilidade button:hover {
     background-color: #23481e;
 }
 
-/*linha de leitura*/
-.reading-line {
+
+.linhaLeitura {
     position: fixed;
     width: 50%;
     height: 2px;
@@ -60,12 +60,11 @@
     z-index: 1000;
 }
 
-/*alto contraste (inversão de cores)*/
-.high-contrast {
+
+.altoContraste {
     filter: invert(1);
 }
 
-/* exceção para imagens*/
-.high-contrast img {
+.altoContraste img {
     filter: invert(1); 
 }
