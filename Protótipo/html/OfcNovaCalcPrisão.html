@@ -305,8 +305,9 @@ function calcularPensao() {
         valorComJuros = valorCorrigido * (1+(Juros/100))
         valorFinal = (valorComJuros*numeroFilhos*3);
     }
-         
-document.getElementById('resultado').value = `R$ ${valorFinal.toFixed(2)}`; // atualiza o campo de resultado
+
+    console.log('Valor final da pensão:', valorFinal);
+    document.getElementById('resultado').value = `R$ ${valorFinal.toFixed(2)}`; 
 }
 
 function toggleFields() {
