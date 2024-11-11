@@ -295,8 +295,8 @@ function calcularPensao() {
         valorFinal = valorComJuros * numeroFilhos * mesesPenhora;
     }
 
-            
-    document.getElementById('resultado').value = `R$ ${valorFinal.toFixed(2)}`; // atualiza o campo de resultado
+    console.log('Valor final da pensão:', valorFinal);       
+    document.getElementById('resultado').value = `R$ ${valorFinal.toFixed(2)}`; 
 }
 
 function toggleFields() {
