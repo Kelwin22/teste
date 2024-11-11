@@ -1,4 +1,3 @@
-/* Botão de Acessibilidade - Posicionado no canto superior direito */
 .btn-acessibilidade {
     position: fixed;
     top: 10px;
@@ -16,12 +15,12 @@
     transition: background-color 0.3s ease;
 }
 
-/* Efeito hover para o botão de acessibilidade */
+
 .btn-acessibilidade:hover {
-    background-color: #ffcc00c1; /* Ajuste conforme desejado */
+    background-color: #ffcc00c1; 
 }
 
-/* Menu de Acessibilidade */
+
 #menuAcessibilidade {
     position: fixed;
     top: 50px;
@@ -36,7 +35,7 @@
     display: none;
 }
 
-/* Botões dentro do Menu de Acessibilidade */
+
 #menuAcessibilidade button {
     display: block;
     width: 100%;
@@ -51,12 +50,12 @@
     transition: background-color 0.3s ease;
 }
 
-/* Efeito hover para os botões do menu de acessibilidade */
+
 #menuAcessibilidade button:hover {
     background-color: #ffcc00c1;
 }
 
-/* Linha de Leitura */
+
 .linhaLeitura {
     position: fixed;
     width: 50%;
@@ -66,12 +65,12 @@
     z-index: 1000;
 }
 
-/* Modo de Alto Contraste */
+
 .altoContraste {
     filter: invert(1);
 }
 
-/* Reverter a inversão de cores para imagens no modo de alto contraste */
+
 .altoContraste img {
     filter: invert(1);
 }
