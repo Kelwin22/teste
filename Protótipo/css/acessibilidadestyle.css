@@ -1,42 +1,47 @@
+/* Botão de Acessibilidade - Posicionado no canto superior direito */
 .btn-acessibilidade {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
     display: block;
     width: auto;
-    background-color: #2d5a27;
-    color: white;
+    background-color: #ffcc00;
+    color: black;
     border: none;
-    padding: 10px;
-    margin-bottom: 5px;
-    margin-top: 20px; 
-    margin-left: 10px;
+    padding: 10px 15px;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
+/* Efeito hover para o botão de acessibilidade */
 .btn-acessibilidade:hover {
-    background-color: #2b4b22; /* Cor ao passar o mouse, ajuste conforme desejado */
+    background-color: #ffcc00c1; /* Ajuste conforme desejado */
 }
 
+/* Menu de Acessibilidade */
 #menuAcessibilidade {
-    display: none;
-    position: absolute;
+    position: fixed;
     top: 50px;
-    right: 20px;
+    right: 10px;
+    z-index: 1000;
     background-color: #f0f2f5;
     color: #2d5a27;
     border: 1px solid #ccc;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
     border-radius: 8px;
+    display: none;
 }
 
+/* Botões dentro do Menu de Acessibilidade */
 #menuAcessibilidade button {
     display: block;
     width: 100%;
-    background-color: #2d5a27;
-    color: white;
+    background-color: #ffcc00;
+    color: black;
     border: none;
     padding: 10px;
     margin-bottom: 5px;
@@ -46,11 +51,12 @@
     transition: background-color 0.3s ease;
 }
 
+/* Efeito hover para os botões do menu de acessibilidade */
 #menuAcessibilidade button:hover {
-    background-color: #23481e;
+    background-color: #ffcc00c1;
 }
 
-
+/* Linha de Leitura */
 .linhaLeitura {
     position: fixed;
     width: 50%;
@@ -60,11 +66,12 @@
     z-index: 1000;
 }
 
-
+/* Modo de Alto Contraste */
 .altoContraste {
     filter: invert(1);
 }
 
+/* Reverter a inversão de cores para imagens no modo de alto contraste */
 .altoContraste img {
-    filter: invert(1); 
+    filter: invert(1);
 }
