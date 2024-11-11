@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rito - Prisão</title>
+    <link rel="stylesheet" href="styleleigosprisão.css">
+    <link rel="stylesheet" href="acessibilidadestyle.css">
+</head>
+<body>
+
+<header>
+    <h1>Rito - Prisão</h1>
+</header>
+
+<button class="btn-acessibilidade" onclick="exibirMenuAcessibilidade()">Acessibilidade</button>
+<div id="menuAcessibilidade" style="display: none;">
+    <button onclick="ajustarTamanhoFonte(1)">Aumentar fonte</button>
+    <button onclick="ajustarTamanhoFonte(-1)">Diminuir fonte</button>
+    <button onclick="alternarContraste()">Alto contraste</button>
+    <button onclick="alternarLinhaLeitura()">Linha de leitura</button>
+</div>
+
+<div class="container">
+    <h2>Dados do Processo</h2>
+    <form>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="nProcesso">Número do Processo:</label>
+                <input type="text" id="nProcesso" name="nProcesso" required>
+            </div>
+            <div class="form-group">
+                <label for="data_inicio">Data de Início:</label>
+                <input type="date" id="data_inicio" name="data_inicio" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="data_final">Data Final:</label>
+                <input type="date" id="data_final" name="data_final" required>
+            </div>
+            <div class="form-group">
+                <label for="percentual">Percentual:</label>
+                <input type="text" id="percentual" name="percentual" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="cobranca">Cobrança:</label>
+                <select name="cobranca" id="cobranca" onchange="toggleFields()">
+                    <option value="SalMin">Sal. Mínimo</option>
+                    <option value="renda">Renda</option>
+                </select>
+            </div>
+            <div class="form-group" id="valorRendaGroup" style="display: none;">
+                <label for="valor_renda">Valor da Renda:</label>
+                <input type="text" id="valor_renda" name="valor_renda">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="indice_correção">Índice de Correção:</label>
+                <input type="text" id="indice_correção" name="indice_correção" placeholder="4" value="4" required>
+            </div>
+            <div class="form-group">
+                <label for="juros">Juros:</label>
+                <input type="text" id="juros" name="juros" placeholder="1" value="1" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group full-width">
+                <label for="numero_filhos">Número de Filhos:</label>
+                <input type="number" id="numero_filhos" name="numero_filhos" min="1" max="100" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <input type="button" value="Calcular Pensão" onclick="calcularPensao()">
+        </div>
+        <div class="form-row full-width">
+            <label for="resultado">Resultado da Pensão:</label>
+            <input type="text" id="resultado" name="resultado" readonly>
+        </div>
+    </form>
+</div>
+
+<footer>
+    <p>Defensoria Pública do Distrito Federal &copy; 2024</p>
+</footer>
+
+<script>
+let tamanhoFonte = 16;
+let altoContraste = false;
+let linhaLeitura;
+
+function exibirMenuAcessibilidade() {
+    const menu = document.getElementById('menuAcessibilidade');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+function ajustarTamanhoFonte(mudanca) {
+    tamanhoFonte += mudanca;
+    document.querySelectorAll('body, body *').forEach(element => {
+        const tamanhoAtual = parseFloat(window.getComputedStyle(element).fontSize);
+        element.style.fontSize = (tamanhoAtual + mudanca) + 'px';
+    });
+}
+
+function alternarContraste() {
+    altoContraste = !altoContraste;
+    document.body.classList.toggle('altoContraste', altoContraste);
+}
+
+function alternarLinhaLeitura() {
+    if (!linhaLeitura) {
+        linhaLeitura = document.createElement('div');
+        linhaLeitura.classList.add('linhaLeitura');
+        document.body.appendChild(linhaLeitura);
+        document.addEventListener('mousemove', moverLinhaLeitura);
+    } else {
+        linhaLeitura.remove();
+        linhaLeitura = null;
+        document.removeEventListener('mousemove', moverLinhaLeitura);
+    }
+}
+
+function moverLinhaLeitura(evento) {
+    if (linhaLeitura) {
+        linhaLeitura.style.top = `${evento.clientY}px`;  
+        linhaLeitura.style.left = `${evento.clientX - (linhaLeitura.offsetWidth / 2)}px`;  
+    }
+}
+
+function calcularDiferencaMeses() {
+    const dataInicio = new Date(document.getElementById('data_inicio').value);
+    const dataFinal = new Date(document.getElementById('data_final').value);
+    const anos = dataFinal.getFullYear() - dataInicio.getFullYear();
+    const meses = dataFinal.getMonth() - dataInicio.getMonth();
+    return anos * 12 + meses;
+}
+
+function calcularPensao() {
+    const tipoCobranca = document.getElementById('cobranca').value;
+    const rendaDevedor = parseFloat(document.getElementById('valor_renda').value) || 0;
+    const percentual = parseFloat(document.getElementById('percentual').value);
+    const salarioMinimo = 1412;
+    const numeroFilhos = parseInt(document.getElementById('numero_filhos').value);
+    const indiceCorrecao = parseFloat(document.getElementById('indice_correção').value);
+    const juros = parseFloat(document.getElementById('juros').value);
+    const totalMeses = calcularDiferencaMeses();
+
+    let valorBase = tipoCobranca === "renda" ? rendaDevedor * (percentual / 100) : salarioMinimo;
+    let valorCorrigido = valorBase * (1 + (indiceCorrecao / 100));
+    let valorComJuros = valorCorrigido * (1 + (juros / 100));
+    let valorFinal = valorComJuros * numeroFilhos * 3;
+    
+    document.getElementById('resultado').value = `R$ ${valorFinal.toFixed(2)}`;
+}
+
+function toggleFields() {
+    const cobranca = document.getElementById('cobranca').value;
+    const valorRendaGroup = document.getElementById('valorRendaGroup');
+    valorRendaGroup.style.display = cobranca === 'renda' ? 'block' : 'none';
+}
+</script>
+</body>
+</html>
